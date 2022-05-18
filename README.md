@@ -1,9 +1,9 @@
-# TDK
+# Master's Thesis
 
-This is my research project report submission to the Scientific Students' Association Conference.
+This is my Master's Thesis.
 
-| Title      | Simulation of quantum walks on a classical computer |
-| :--------- | :---------------------------------------------------|
-| Advisor    | dr. Katalin Friedl                                  |
-| University | Budapest University of Technology and Economics     |
-| Year       | 2021                                                |
+| Title      | Application of Quantum Computing in Bioinformatics |
+| :--------- | :--------------------------------------------------|
+| Advisor    | dr. Katalin Friedl                                 |
+| University | Budapest University of Technology and Economics    |
+| Year       | 2022                                               |

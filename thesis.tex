@@ -1,8 +1,8 @@
-\documentclass[11pt,a4paper,oneside]{report}
+\documentclass[11pt,a4paper,oneside]{report} % Single-side
+%\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
 
 \input{include/packages}
 
-%TODO Set the main variables
 \newcommand{\vikszerzoVezeteknev}{Nemkin}
 \newcommand{\vikszerzoKeresztnev}{Viktória}
 
@@ -10,11 +10,11 @@
 \newcommand{\vikkonzulensAVezeteknev}{Friedl}
 \newcommand{\vikkonzulensAKeresztnev}{Katalin}
 
-\newcommand{\vikcim}{Simulation of quantum walks\\on a classical computer}
+\newcommand{\vikcim}{Application of Quantum Computing in Bioinformatics}
 \newcommand{\viktanszek}{\bmeszit}
 \newcommand{\vikdoktipus}{\msc}
+\newcommand{\vikmunkatipusat}{diplomatervet}
 
-\input{include/tdk-variables}
 \newcommand{\szerzoMeta}{\vikszerzoVezeteknev{} \vikszerzoKeresztnev}
 
 \input{include/thesis-en}
@@ -24,9 +24,10 @@
 
 \pagenumbering{gobble}
 \selectthesislanguage
-\include{include/titlepage-tdk}
+\include{include/titlepage}
 \tableofcontents\vfill
 
+\include{include/declaration}
 \include{content/begin/abstract}
 \pagenumbering{arabic}
 \include{content/begin/introduction}
@@ -47,7 +48,8 @@
 \addcontentsline{toc}{chapter}{\bibname}
 \bibliography{bib/mybib}
 
-% Appendices
-\include{content/end/appendices}
+% Appendix
+\include{content/appendices}
 
+%\label{page:last}
 \end{document}
