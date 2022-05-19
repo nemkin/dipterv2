@@ -14,15 +14,14 @@ From a computer science viewpoint, a simplified model of the DNA is a string, co
 
 Between any two humans, the amount of genetic variation is estimated to be around 0.6\%\cite{the_1000_genomes_project_consortium_global_2015}. This enables us to use the targeted part of the genome sequence preassembled by the Human Genome Project and align our obtained DNA sequence fragments to the best fitting position in it to obtain the full string of our DNA. Algorithms such as the Smith–Waterman algorithm and the Needleman–Wunsch algorithm can perform this sequence alignment task efficiently.
 
-\subsubsection{Smith–Waterman algorithm}
-
-\subsubsection{Needleman–Wunsch algorithm}
-
 \subsection{Protein folding}
 
-\subsubsection{Aminoacids in the human body}
+Proteins are one of the fundamental building blocks of the human body. They play an essential role in our immune system response, transportation of molecules throughout the body, the catalysation of metabolic reactions and signal transmission. Protein molecules consist of a single, long chain of amino acids. While several amino acid molecules exist in nature, only 20 of those are present in proteins.
 
-\begin{center}
+The 20 standard amino acids can be seen in Table \ref{aminoacids20}. The most important property of these is their affinity to water: Some amino acids are polar (hydrophilic), commonly denoted by a P, which means they can establish hydrogen bonds with $H_2O$ molecules. In contrast, others are hydrophobic (nonpolar), commonly denoted by an H, which do not establish these bonds with water.
+
+\begin{table}[H]
+\centering
 \begin{tabular}{|l|ccc|}
 \hline
 Name          & Abbreviation & Code & Polarity \\
@@ -50,7 +49,9 @@ Threonine     & Thr & T & P \\
 Tyrosine      & Tyr & Y & P \\
 \hline
 \end{tabular}
-\end{center}
+\caption{Aminoacids in proteins}
+\label{aminoacids20}
+\end{table}
 
 \subsection{Molecular docking}
 
