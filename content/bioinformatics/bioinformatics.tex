@@ -1,2 +1,20 @@
 \chapter{Bioinformatics}
 
+In this chapter I present an overview of bioinformatical problems, particularly protein folding, which is the central problem related to drug discovery.\cite{BockenhauerAlgoBioinfo}
+
+\section{Computational problems in bioinformatics}
+
+\subsection{DNA sequencing and the Human Genome Project}
+
+The complete genetic material of a human being is called the human genome, which is contained in the nucleus of every single cell of the human body and is replicated during cell division. The human genome consists of 46 chromosomes in total, each of which contains a single deoxyribonucleic acid, or DNA molecule for short. A DNA molecule is two twisting, paired strands (called the double helix structure) and is made up of around 3.2 billion pairs of nucleotide bases. Nucleotides are usually denoted by the letters A,T,C and G, with A-T and C-G forming pairs together. A sequence of nucleotides, that together encode the synthesis of a specific protein or RNA is called a gene.
+
+Research into the human genome has started with the discovery of the double helix structure of the DNA molecule in 1953, by Francis Crick and James Watson. The Human Genome Project\cite{CollinsHumanGenome1995} was launched in 1990, an international research effort to identify the function of all 50,000 to 100,000 genes of the complete human genetic material and was completed in early 2022\cite{zahn_filling_2022}. Apart from injuries, nearly all human medical conditions are related to mutations at specific locations in the structure and function of the genetic material, so identifying changes in an individual's DNA sequence can be an indispensable tool for predicting and preventing disease, while providing individualized care. This requires a quick method of sequencing specific parts of the DNA and comparing them to a healthy variant.
+
+From a computer science viewpoint DNA sequencing is extracting a string, consisting of the 4 letters (A,C,T and G) from a physical molecule. Due to the limits of our technology, current methods enable us to read up to 1000 consecutive letters in a single run. To sequence a longer string, we can break the molecule into sufficiently smaller fragments and sequence them individually. Unfortunately, in this process the order in which the fragments originally occured is lost. One possible approach to deal with this problem is to create copies of the DNA molecule we are interested in and randomly break each of these copies into fragments. With high probability, the resulting fragments from different copies will overlap with each other. Then, the task becomes reconstructing the original string from these fragments, while taking into account the possible errors in our biological measurements.
+
+Between any two humans, the amount of genetic variation is estimated to be around 0.6\%\cite{the_1000_genomes_project_consortium_global_2015}. This enables us to use the targeted part of the genome sequence preassembled by the Human Genome Project and align our obtained DNA sequence fragments to the best fitting position in it to obtain the full string of our DNA. Algorithms such as the Smith–Waterman algorithm and the Needleman–Wunsch algorithm can perform this sequence alignment task efficiently.
+
+\subsection{Protein folding models}
+
+\subsection{Molecular docking}
+
