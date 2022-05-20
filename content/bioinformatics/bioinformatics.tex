@@ -112,5 +112,16 @@ Many human diseases result from abnormal interactions between proteins. In order
 
 In order to inhibit an enzyme's reaction from happening, we must find a protein that folds into a shape that fits into the enzyme's binding site to prevent it from catalyzing a reaction. The analogy of 'lock-and-key' was coined for this by Emil Fischer in 1894. He suggested that the 'lock' describes the enzyme's binding site, and the 'key' describes the missing molecule inhibitor, which has to fit into the 'lock'. \cite{a_molecular_2018} \cite{walker_molecular_2008} The computational task of predicting whether a protein with a known 3D structure will fit inside the binding site of a specific enzyme is called molecular docking.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/bioinformatics/molecular_docking.jpg}
+    \caption{Molecular docking \\(\href{https://commons.wikimedia.org/wiki/File:Docking.jpg}{Source: Wikimedia Commons})}
+\end{figure}
+
 In the molecular docking problem, both the binding site's 3D structure and the protein's 3D structure are represented by a graph. The graph's vertices are the atoms on the surface. The edges represent a chemical bond between the corresponding atoms. The weight of a given edge represents the physical distance between the atoms. Omitting the edge weights, the problem is analogous to subgraph isomorphy, the binding site's graph representation being a subgraph of the inhibitor molecule's graph representation. With the edge weights present, we employ a measure that assigns a score to an isomorphy mapping of the vertices between the two graphs. Typically root mean square deviation (RMSD) is used, which can be defined for two sets of (ordered) points. The mapping achieving the highest score is the best theoretical fit for the molecule.
  \cite{wang_protein_2021}
+ 
+\subsubsection{Protein folding for drug discovery}
+
+In the molecular docking task, the candidate protein has already been selected with its 3D structure known. For the purpose of drug discovery, we are searching for the best possible protein as well, which is why databases of proteins with their predicted 3D structures are being worked on, such as \href{https://www.uniprot.org/}, or \href{https://alphafold.ebi.ac.uk/}. \cite{senior_improved_2020}
+
