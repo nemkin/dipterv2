@@ -93,5 +93,24 @@ The functionality and role of a protein are determined by its spatial structure,
     \caption{Quaternary structure of the protein PCNA\\(Author: Thomas Shafee, \href{https://en.wikipedia.org/wiki/File:Protein\_structure\_(full).png}{Source})}
 \end{figure}
 
-\subsection{Molecular docking}
+For example, hemoglobin is a protein found in red blood cells whose function is to carry oxygen molecules throughout the blood vessels. The oxygen molecule binds to the hemo groups found in the protein.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/bioinformatics/hemoglobin.png}
+    \caption{Hemoglobin, the iron-containing heme groups are shown in green \\(Author: Richard Wheeler, \href{https://en.wikipedia.org/wiki/File:1GZX\_Haemoglobin.png}{Source})}
+\end{figure}
+
+To understand the function of a protein, we must determine its complete 3D structure. While techniques exist to measure a molecule's structure in real life, these are incredibly time-consuming and expensive to perform, even for a single molecule. Consequently, we would like to design algorithms that can predict the complete 3D structure of a protein based on its primary structure or its amino acid sequence. These algorithms are called protein folding algorithms.
+
+\subsubsection{Molecular docking}
+
+Proteins are the primary agents of biological function, as they control the various chemical mechanisms that occur inside the cells. Proteins that act as biological catalysts are called enzymes. Catalysts facilitate various chemical reactions without being consumed in the process. These molecules have a binding site (a 'hole' on their 3D surface), into which only a specific other molecule fits, which is called a substrate. During the chemical reaction, the substrate is turned into other products.  \cite{fionda_networks_2019}
+
+Many human diseases result from abnormal interactions between proteins. In order to prevent disease, we can stop (inhibit) these interactions from happening. This is done by blocking the binding site of the faulty enzyme with another molecule. Conventional medicine uses giant molecules (antibodies) or tiny molecules (like aspirin) to achieve this. The next generation of protein therapeutics currently under development aims to find inhibitors within the family of smaller-sized proteins.
+ \cite{ryan_proteinprotein_2005}
+
+In order to inhibit an enzyme's reaction from happening, we must find a protein that folds into a shape that fits into the enzyme's binding site to prevent it from catalyzing a reaction. The analogy of 'lock-and-key' was coined for this by Emil Fischer in 1894. He suggested that the 'lock' describes the enzyme's binding site, and the 'key' describes the missing molecule inhibitor, which has to fit into the 'lock'. \cite{a_molecular_2018} \cite{walker_molecular_2008} The computational task of predicting whether a protein with a known 3D structure will fit inside the binding site of a specific enzyme is called molecular docking.
+
+In the molecular docking problem, both the binding site's 3D structure and the protein's 3D structure are represented by a graph. The graph's vertices are the atoms on the surface. The edges represent a chemical bond between the corresponding atoms. The weight of a given edge represents the physical distance between the atoms. Omitting the edge weights, the problem is analogous to subgraph isomorphy, the binding site's graph representation being a subgraph of the inhibitor molecule's graph representation. With the edge weights present, we employ a measure that assigns a score to an isomorphy mapping of the vertices between the two graphs. Typically root mean square deviation (RMSD) is used, which can be defined for two sets of (ordered) points. The mapping achieving the highest score is the best theoretical fit for the molecule.
+ \cite{wang_protein_2021}
