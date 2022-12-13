@@ -14,7 +14,6 @@
 	pages = {561--602},
 }
 
-
 @article{crescenzi_complexity_1998,
 	title = {On the {Complexity} of {Protein} {Folding}},
 	volume = {5},
@@ -47,7 +46,6 @@
 	pages = {706--710},
 }
 
-
 @article{wang_protein_2021,
 	title = {Protein {Docking} {Model} {Evaluation} by {Graph} {Neural} {Networks}},
 	volume = {8},
@@ -63,7 +61,6 @@
 	pages = {647915},
 }
 
-
 @incollection{fionda_networks_2019,
 	title = {Networks in {Biology}},
 	isbn = {9780128114322},
@@ -77,7 +74,6 @@
 	doi = {10.1016/B978-0-12-809633-8.20420-2},
 	pages = {915--921},
 }
-
 
 @article{ryan_proteinprotein_2005,
 	title = {Protein–protein interactions in human disease},
@@ -95,8 +91,6 @@
 	pages = {441--446},
 }
 
-
-
 @article{a_molecular_2018,
 	title = {Molecular {Docking}: {From} {Lock} and {Key} to {Combination} {Lock}},
 	volume = {2},
@@ -110,7 +104,6 @@
 	author = {A, Tripathi and Va, Bankaitis},
 	year = {2018},
 }
-
 
 @incollection{walker_molecular_2008,
 	address = {Totowa, NJ},
@@ -128,7 +121,6 @@
 	pages = {365--382},
 }
 
-
 @article{zahn_filling_2022,
 	title = {Filling the gaps},
 	volume = {376},
@@ -144,7 +136,6 @@
 	year = {2022},
 	pages = {42--43},
 }
-
 
 @article{CollinsHumanGenome1995,
 	title = {The {Human} {Genome} {Project}},
@@ -211,14 +202,14 @@
 }
 
 @book{HalmosLinearAlgebra,
-	address = {New York},
-	series = {Undergraduate texts in mathematics},
-	title = {Finite-dimensional vector spaces},
-	isbn = {9780387900933},
-	publisher = {Springer-Verlag},
-	author = {Halmos, Paul R.},
-	year = {1974},
-	keywords = {Vector spaces, Transformations (Mathematics)},
+  address = {New York},
+  series = {Undergraduate texts in mathematics},
+  title = {Finite-dimensional vector spaces},
+  isbn = {9780387900933},
+  publisher = {Springer-Verlag},
+  author = {Halmos, Paul R.},
+  year = {1974},
+  keywords = {Vector spaces, Transformations (Mathematics)},
 }
 
 @article{KempeIntroduction,
@@ -252,13 +243,13 @@
 }
 
 @book{Portugal,
-	address = {Berlin; New York},
-	series = {Quantum {Science} and {Technology}},
-	title = {Quantum {Walks} and {Search} {Algorithms}},
-	isbn = {9783319978130},
-	publisher = {Springer},
-	author = {Portugal, Renato},
-	year = {2018},
+  address = {Berlin; New York},
+  series = {Quantum {Science} and {Technology}},
+  title = {Quantum {Walks} and {Search} {Algorithms}},
+  isbn = {9783319978130},
+  publisher = {Springer},
+  author = {Portugal, Renato},
+  year = {2018},
 }
 
 @book{DesignPatterns,
@@ -315,4 +306,162 @@ volume = {40},
 number = {1},
 pages = {142-164},
 year = {2011},
+}
+
+% TDK 2022
+
+@misc{MyTDK2021,
+	title = {Simulation of quantum walks on a classical computer},
+	url = {https://tdk.bme.hu/VIK/ViewPaper/Kvantumsetak-szimulacioja-klasszikus},
+	abstract = {In my dissertation, I present the mathematical framework for quantum walks, detailing the points critical for implementation, which are given less emphasis in the literature. I describe the architecture and capabilities of the simulator program I have written and the conclusions of the simulations I have run.},
+	publisher = {Budapest University of Technology and Economics},
+	author = {Nemkin, Viktória},
+	keywords = {Quantum Walks},
+	year={2021}
+}
+
+@misc{MyTDK2022,
+	title = {Optimizing memory usage in quantum algorithm simulation},
+	url = {https://tdk.bme.hu/VIK/ViewPaper/Memoriafelhasznalas-optimalizalasa},
+	abstract = {In my paper, I focus on developing these memory optimization methodologies and implementing them in a general-purpose quantum algorithm simulation framework. I present the classical algorithm and architecture design steps that form the basis of the system and demonstrate how this system can be used in quantum algorithm research. The framework is primarily intended to be used in a resource-constrained environment to enable running tests on a larger number of qubits, thus facilitating theoretical research. Accordingly, I will make the system and its documentation available to everyone in an open-source licensed form.},
+	publisher = {Budapest University of Technology and Economics},
+	author = {Nemkin, Viktória},
+	keywords = {Memory Usage Optimization Quantum Simulation},
+	year={2022}
+}
+
+@misc{GroverQiskitTextbook,
+	title = {Qiskit/qiskit: {Qiskit} 0.39.0},
+	copyright = {Open Access},
+	shorttitle = {Qiskit/qiskit},
+	url = {https://qiskit.org/textbook/ch-algorithms/grover.html},
+	abstract = {Changelog Changed Increased the {\textless}code{\textgreater}qiskit-terra{\textless}/code{\textgreater} version to the latest release 0.22.0},
+	urldate = {2022-11-01},
+	publisher = {Zenodo},
+	author = {Frank, Harkins and others},
+	month = oct,
+	year = {2022},
+	doi = {10.5281/ZENODO.2573505},
+}
+
+@article{GroverOriginal,
+	title = {A fast quantum mechanical algorithm for database search},
+	url = {http://arxiv.org/abs/quant-ph/9605043},
+	abstract = {Imagine a phone directory containing N names arranged in completely random order. In order to find someone's phone number with a 50\% probability, any classical algorithm (whether deterministic or probabilistic) will need to look at a minimum of N/2 names. Quantum mechanical systems can be in a superposition of states and simultaneously examine multiple names. By properly adjusting the phases of various operations, successful computations reinforce each other while others interfere randomly. As a result, the desired phone number can be obtained in only O(sqrt(N)) steps. The algorithm is within a small constant factor of the fastest possible quantum mechanical algorithm.},
+	urldate = {2022-11-01},
+	publisher = {arXiv},
+	author = {Grover, Lov K.},
+	month = nov,
+	year = {1996},
+	note = {arXiv:quant-ph/9605043},
+	keywords = {Quantum Physics},
+}
+
+@article{figgatt_complete_2017,
+	title = {Complete 3-{Qubit} {Grover} search on a programmable quantum computer},
+	volume = {8},
+	issn = {2041-1723},
+	url = {http://www.nature.com/articles/s41467-017-01904-7},
+	doi = {10.1038/s41467-017-01904-7},
+	language = {en},
+	number = {1},
+	urldate = {2022-11-01},
+	journal = {Nature Communications},
+	author = {Figgatt, Caroline and Maslov, Dmitri and Landsman, Kevin A. and Linke, Norbert M. and Debnath, Shantanu and Monroe, Christopher},
+	month = dec,
+	year = {2017},
+	pages = {1918},
+}
+
+@book{nielsen_quantum_2000,
+	address = {Cambridge ; New York},
+	title = {Quantum computation and quantum information},
+	isbn = {9780521632355 9780521635035},
+	publisher = {Cambridge University Press},
+	author = {Nielsen, Michael A. and Chuang, Isaac L.},
+	year = {2000},
+	keywords = {Quantum computers},
+}
+
+
+@article{feynman_simulating_1982,
+	title = {Simulating physics with computers},
+	volume = {21},
+	issn = {0020-7748, 1572-9575},
+	url = {http://link.springer.com/10.1007/BF02650179},
+	doi = {10.1007/BF02650179},
+	language = {en},
+	number = {6-7},
+	urldate = {2022-11-01},
+	journal = {International Journal of Theoretical Physics},
+	author = {Feynman, Richard P.},
+	month = jun,
+	year = {1982},
+	pages = {467--488},
+}
+
+@article{benioff_models_1998,
+	title = {Models of {Quantum} {Turing} machines},
+	volume = {46},
+	issn = {0015-8208, 1521-3978},
+	url = {http://arxiv.org/abs/quant-ph/9708054},
+	doi = {10.1002/(SICI)1521-3978(199806)46:4/5<423::AID-PROP423>3.0.CO;2-G},
+	abstract = {Quantum Turing machines are discussed and reviewed in this paper. Most of the paper is concerned with processes defined by a step operator \$T\$ that is used to construct a Hamiltonian \$H\$ according to Feynman's prescription. Differences between these models and the models of Deutsch are discussed and reviewed. It is emphasized that the models with \$H\$ constructed from \$T\$ include fully quantum mechanical processes that take computation basis states into linear superpositions of these states. The requirement that \$T\$ be distinct path generating is reviewed. The advantage of this requirement is that Schr{\textbackslash}"\{o\}dinger evolution under \$H\$ is one dimensional along distinct finite or infinite paths of nonoverlapping states in some basis \$B\_\{T\}\$. It is emphasized that \$B\_\{T\}\$ can be arbitrarily complex with extreme entanglements between states of component systems. The new aspect of quantum Turing machines introduced here is the emphasis on the structure of graphs obtained when the states in the \$B\_\{T\}\$ paths are expanded as linear superpositions of states in a reference basis such as the computation basis \$B\_\{C\}\$. Examples are discussed that illustrate the main points of the paper. For one example the graph structures of the paths in \$B\_\{T\}\$ expanded as states in \$B\_\{C\}\$ include finite stage binary trees and concatenated finite stage binary trees with or without terminal infinite binary trees. Other examples are discussed in which the graph structures correspond to interferometers and iterations of interferometers.},
+	number = {4-5},
+	urldate = {2022-11-01},
+	journal = {Fortschritte der Physik},
+	author = {Benioff, Paul},
+	month = jun,
+	year = {1998},
+	note = {arXiv:quant-ph/9708054},
+	keywords = {Quantum Physics},
+	pages = {423--441},
+}
+
+@article{deutsch_quantum_1985,
+	title = {Quantum theory, the {Church}–{Turing} principle and the universal quantum computer},
+	volume = {400},
+	issn = {0080-4630},
+	url = {https://royalsocietypublishing.org/doi/10.1098/rspa.1985.0070},
+	doi = {10.1098/rspa.1985.0070},
+	abstract = {It is argued that underlying the Church–Turing hypothesis there is an implicit physical assertion. Here, this assertion is presented explicitly as a physical principle: ‘every finitely realizible physical system can be perfectly simulated by a universal model computing machine operating by finite means’. Classical physics and the universal Turing machine, because the former is continuous and the latter discrete, do not obey the principle, at least in the strong form above. A class of model computing machines that is the quantum generalization of the class of Turing machines is described, and it is shown that quantum theory and the 'universal quantum computer’ are compatible with the principle. Computing machines resembling the universal quantum computer could, in principle, be built and would have many remarkable properties not reproducible by any Turing machine. These do not include the computation of non-recursive functions, but they do include ‘quantum parallelism’, a method by which certain probabilistic tasks can be performed faster by a universal quantum computer than by any classical restriction of it. The intuitive explanation of these properties places an intolerable strain on all interpretations of quantum theory other than Everett’s. Some of the numerous connections between the quantum theory of computation and the rest of physics are explored. Quantum complexity theory allows a physically more reasonable definition of the ‘complexity’ or ‘knowledge’ in a physical system than does classical complexity theory.},
+	language = {en},
+	number = {1818},
+	urldate = {2022-11-01},
+	journal = {Proceedings of the Royal Society of London. A. Mathematical and Physical Sciences},
+	author = {Deutsch, David},
+	month = jul,
+	year = {1985},
+	pages = {97--117},
+}
+
+@inproceedings{bernstein_quantum_1993,
+	address = {San Diego, California, United States},
+	title = {Quantum complexity theory},
+	isbn = {9780897915915},
+	url = {http://portal.acm.org/citation.cfm?doid=167088.167097},
+	doi = {10.1145/167088.167097},
+	language = {en},
+	urldate = {2022-11-01},
+	booktitle = {Proceedings of the twenty-fifth annual {ACM} symposium on {Theory} of computing  - {STOC} '93},
+	publisher = {ACM Press},
+	author = {Bernstein, Ethan and Vazirani, Umesh},
+	year = {1993},
+	pages = {11--20},
+}
+
+@article{bennett_strengths_1997,
+	title = {Strengths and {Weaknesses} of {Quantum} {Computing}},
+	volume = {26},
+	issn = {0097-5397, 1095-7111},
+	url = {http://epubs.siam.org/doi/10.1137/S0097539796300933},
+	doi = {10.1137/S0097539796300933},
+	language = {en},
+	number = {5},
+	urldate = {2022-11-01},
+	journal = {SIAM Journal on Computing},
+	author = {Bennett, Charles H. and Bernstein, Ethan and Brassard, Gilles and Vazirani, Umesh},
+	month = oct,
+	year = {1997},
+	pages = {1510--1523},
 }
