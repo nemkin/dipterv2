@@ -1,8 +1,8 @@
-\section{Quantum walks}
+\chapter{Quantum walks}
 
 Current technology is yet to produce a significant number of qubits (quantum bits) in a quantum processor, but many believe the amount will increase over the years. The first practical quantum algorithms to be run on these processors are likely to be the ones that use qubits sparingly. Quantum walking, the generalized version of classical random walking, is exactly this kind of algorithm. The number of qubits required to run a quantum walk on a graph is logarithmic in the number of vertices, making it a promising technique for the near future. Furthermore, by extending the quantum walk algorithm with an oracle, it can be used to perform database search-based algorithms, which could be used for solving many of the computationally hard bioinformatical problems.
 
-\subsection{Classical random walks}
+\section{Classical random walks}
 
 Before introducing quantum computation and specifically quantum walks, I first overview classical random walks, based on the book Probability and Computing, written by Michael Mitzenmacher and Eli Upfal~\cite{MitzenmacherProbability}.
 
@@ -74,13 +74,13 @@ m(\varepsilon) = \max\limits_{\pi_0}\{\min\{t : \sum\limits_{j=0}^{n}|\pi_t[j] -
 
 \end{definition}
 
-\subsection{From classical to quantum}
+\section{From classical to quantum}
 
 In classical random walks, the walker moves from the current vertex via one of its outgoing edges, chosen randomly, weighted by the edge weights. This random choice can be interpreted as a (generalized) coin toss.
 
 To formulate a quantum version of graph walking, we define the quantum coin, which will replace the classical concept of randomness with quantum superposition.
 
-\subsection{Formulating the Quantum coin}
+\section{Formulating the Quantum coin}
 
 I used Renato Portugal's Quantum Walks and Search Algorithms~\cite{Portugal} book as a reference for the different types of coins presented in this section.
 
@@ -90,7 +90,7 @@ After tossing the coin, the resulting coin state chooses the next step of the qu
 
 For the $d$ dimensional coin state, the corresponding coin flip operator is a $(d\times{}d)$ dimensional unitary matrix. Based on what the transition operator is, several types of coins can be defined. The following ones are typically used in quantum walks.
 
-\subsubsection{Hadamard coin}
+\subsection{Hadamard coin}
 
 The Hadamard coin is the most commonly used quantum coin. It is defined by the Hadamard-matrix as a transition operator:
 
@@ -151,7 +151,7 @@ A $2^n$ dimensional Hadamard-coin operator can be created by taking the tensor p
 
 \end{definition}
 
-\subsubsection{Grover coin}
+\subsection{Grover coin}
 
 The Grover coin originates from Grover's search algorithm, where it is applied as the diffusion operator.
 
@@ -179,7 +179,7 @@ If $N = 2^n$, then $\mathbf{G}$ unrolls to the following representation:
     \end{pmatrix}.
 \end{align*}
 
-\subsubsection{Fourier coin}
+\subsection{Fourier coin}
 
 In contrast to the Hadamard and Grover coins, the Fourier coin can be of any size, not just a power of 2. A size $N$ Fourier-coin, $F_N$ is defined by the matrix of the Quantum Fourier Transform:
 
@@ -206,11 +206,11 @@ $\mathbf{F}$ unrolls to the following representation:
 \end{pmatrix}
 \end{align*}
 
-\subsection{Quantum walks on the line}
+\section{Quantum walks on the line}
 
 Kempe introduces quantum walks from a physicist's perspective in~\cite{KempeIntroduction} using a particle characterised by its position on the line $\ket{x}$ and its spin state $\ket{s}$.
 
-\subsubsection{State space}
+\subsection{State space}
 
 \lineparagraph{Spin state}
 
@@ -255,7 +255,7 @@ The composite state of the system, according to \hyperref[PostulateIV]{[Postulat
     \ket{x}\otimes{}\ket{s}.
 \end{align*}
 
-\subsubsection{Evolution}
+\subsection{Evolution}
 
 The particle travels on the line based on its current spin state:
 \begin{itemize}
@@ -370,7 +370,7 @@ Combining the shift operator and the coin operator together, we obtain the follo
     \mathbf{U} = \mathbf{S}\mathbf{\hat{C}} = \mathbf{S}(\mathbf{I}\otimes{}\mathbf{C})
 \end{align*}
 
-\subsubsection{Measurement}
+\subsection{Measurement}
 
 To measure the probability of the particle being at position $\ket{i}$, the projective measurement operator acting on $\ket{x}$ is defined as $\mathbf{P_i} = \ket{i}\bra{i}$, in accordance with \hyperref[PostulateIIIProjective]{[PostulateIIIProjective]}.
 
@@ -393,7 +393,7 @@ using \hyperref[TensorMixedProduct]{[TensorMixedProduct]}:
     |x_i|^2
 \end{gather*}
 
-\subsection{Generalization of Quantum Walks}
+\section{Generalization of Quantum Walks}
 
 After presenting quantum walking on the line, I review and extend two approaches to generalize it in this chapter.
 
@@ -402,7 +402,7 @@ After presenting quantum walking on the line, I review and extend two approaches
     \item \textbf{Section 4.3.2: Use a single higher dimensional coin}: In~\cite{Portugal}, Renato Portugal describes the generalization of a quantum walk on a line to an arbitrary undirected graph and gives the necessary condition for creating the unitary transition matrix without proof. In this work, I generalize to directed graphs and give proof of the generalization of the condition using directed graphs.
 \end{enumerate}
 
-\subsubsection{Generalization using multiple independent 2 dimensional coins}
+\subsection{Generalization using multiple independent 2 dimensional coins}
 
 In \cite{Portugal}, Renato Portugal defines the following method for Quantum Walking on a 2D grid:
 
@@ -584,7 +584,7 @@ coin's state.
 
 This proves, that the walk on the 2D grid decomposes into two independent line walks on the axes, since $\mathbf{S}_x$ only touches the $x$ coordinate and the first coin, while $\mathbf{S}_y$ only touches the $y$ coordinate and the second coin and there is no entanglement between the registers of the $x$ and $y$ axes. Using this fact, we can simply simulate two independent quantum walks on the line in parallel, or sequentially, using the same registers, which wastly decreases the memory needs of the algorithm. Running in parallel, the memory needs is now $d(4(2N+1)^2) = O(dN^2)$, or running sequentially $(4(2N+1))^2 = O(N^2)$, however the latter uses $dN$ steps, instead of $N$, and $d$ measurements, instead of $1$.
 
-\subsubsection{Generalization using a single higher dimensional coin}
+\subsection{Generalization using a single higher dimensional coin}
 
 Using this method, we generalize quantum walking to arbitrary directed graphs. To do so, we first generalize to regular graphs, then discuss how non-regular graphs can be regularized.
 
