@@ -16,10 +16,17 @@ In the quantum world, a better method exists for searching a problem's domain, w
 
 \section{Application of quantum algorithms in bioinformatics}
 
-An interesting area for algorithmic research is bioinformatics with many real-life applications. I am particularly interested in computer-aided drug design, where problems such as protein folding\cite{crescenzi_complexity_1998} and molecular docking\cite{a_molecular_2018} turn out to be NP-hard ones, which means that despite decades of effort, we have yet to come up with efficient solutions to them using classical computers.
+A fascinating area for algorithmic research is bioinformatics, with many real-life applications. I am particularly interested in computer-aided drug design, which involves finding molecules of a particular shape that fit into molecular holes of a particular shape inside the human body. From this context, computational problems such as protein folding\cite{crescenzi_complexity_1998} and molecular docking\cite{a_molecular_2018} arise and, among many other bioinformatical problems, turn out to be NP-hard ones. This means that we have yet to devise efficient solutions to them in the classical world.
 
+In the quantum world, Grover's search algorithm could give us a quadratic speedup over its classical brute-force counterpart. Furthermore, Grover's algorithm is an unstructured database search, meaning it does not rely on any information about the structure of the problem's domain.
+
+For example, in the case of protein folding, the structure of the domain could be a simple rule for transforming one fold to another. We could portray this as a graph: the vertices representing all possible folds and the edges representing which folds transform into which others, based on our devised rule.
+
+To boost Grover's speed even further, we could inject this structural information about the domain into it using the quantum equivalent of random graph walks, quantum walks.
 
 \section{Contents of this dissertation}
+
+\todo[inline]{Ezt átírni a végegesre.}
 
 In order to reduce the memory requirements for any quantum computation simulation, I have to be able to reduce storing large operation matrices in memory whenever I can. This requires a completely different architecture.
 
