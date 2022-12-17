@@ -1,8 +1,10 @@
-\chapter{Computational problems in bioinformatics}
+\chapter{Bioinformatics}
+
+\section{Computational problems in bioinformatics}
 
 In this chapter, I present an overview of some interesting and important bioinformatical problems, particularly protein folding, which is one of the central problems related to drug discovery\cite{BockenhauerAlgoBioinfo}.
 
-\section{DNA sequencing and the Human Genome Project}
+\subsection{DNA sequencing and the Human Genome Project}
 
 The complete genetic material of a human being is called the human genome, which is contained in the nucleus of every single cell of the human body and is replicated during cell division. The human genome consists of 46 chromosomes, each containing a single deoxyribonucleic acid, or DNA molecule for short. A DNA molecule is two twisting, paired strands (called the double helix structure) and comprises around 3.2 billion pairs of nucleotide bases. Nucleotides are usually denoted by the letters A, T, C and G, with A-T and C-G forming pairs. A sequence of nucleotides that together encode the synthesis of a specific protein or RNA is called a gene.
 
@@ -18,7 +20,7 @@ From a computer science viewpoint, a simplified DNA model is a string consisting
 
 Between any two humans, the amount of genetic variation is estimated to be around 0.6\%\cite{the_1000_genomes_project_consortium_global_2015}. This enables us to use the targeted part of the genome sequence preassembled by the Human Genome Project and align our obtained DNA sequence fragments to the best fitting position to obtain the entire string of our DNA. Algorithms such as the Smith-Waterman algorithm and the Needleman-Wunsch algorithm can efficiently perform this sequence alignment task.
 
-\section{Protein folding}
+\subsection{Protein folding}
 
 Proteins are one of the fundamental building blocks of the human body. They play an essential role in our immune system response, transportation of molecules throughout the body, the catalysation of metabolic reactions and signal transmission. Protein molecules consist of a single, long chain of amino acids. While several amino acid molecules exist in nature, only 20 of those are present in proteins.\cite{BockenhauerAlgoBioinfo}
 
@@ -101,7 +103,7 @@ For example, hemoglobin is a protein found in red blood cells whose function is 
 
 To understand the function of a protein, we must determine its complete 3D structure. While techniques exist to measure a molecule's structure in real life, these are incredibly time-consuming and expensive to perform, even for a single molecule. Consequently, we would like to design algorithms that can predict the complete 3D structure of a protein based on its primary structure or its amino acid sequence. These algorithms are called protein folding algorithms.
 
-\section{Molecular docking}
+\subsection{Molecular docking}
 
 Proteins are the primary agents of biological function, as they control the various chemical mechanisms that occur inside the cells. Proteins that act as biological catalysts are called enzymes. Catalysts facilitate various chemical reactions without being consumed in the process. These molecules have a binding site (a 'hole' on their 3D surface), into which only a specific other molecule fits, which is called a substrate. During the chemical reaction, the substrate is turned into other products.  \cite{fionda_networks_2019}
 
@@ -118,12 +120,14 @@ In order to inhibit an enzyme's reaction from happening, we must find a protein 
 
 In the molecular docking problem, both the binding site's 3D structure and the protein's 3D structure are represented by a graph. The graph's vertices are the atoms on the surface. The edges represent a chemical bond between the corresponding atoms. The weight of a given edge represents the physical distance between the atoms. Omitting the edge weights, the problem is analogous to subgraph isomorphy (an NP-complete problem), the binding site's graph representation being a subgraph of the inhibitor molecule's entire surface in a graph representation. With the edge weights present, we employ a measure that assigns a score to an isomorphy mapping of the vertices between the two graphs. Typically root mean square deviation (RMSD) is used, which can be defined for two sets of (ordered) points. The mapping achieving the highest score is the best theoretical fit for the molecule.
  \cite{wang_protein_2021}
- 
-\section{The HP modell by Dill}
 
-In the molecular docking task, the candidate protein has already been selected with its 3D structure known. For the purpose of drug discovery, we are searching for the best possible protein as well, which is why databases of proteins with their predicted 3D structures are being worked on, such as \href{https://www.uniprot.org/}{https://www.uniprot.org/}, or \href{https://alphafold.ebi.ac.uk/}{https://alphafold.ebi.ac.uk/}. \cite{senior_improved_2020}
+\section{Dill folding}
 
-Modelling and predicting the complete four levels of protein structure is a complex task. Interestingly, simplified models exist that can be experimentally shown to achieve a reasonable approximation. One of these models was given by Dill et al. in 1995. (republished in 2008).\cite{dill_principles_2008} 
+In the molecular docking task, the candidate protein has already been selected with its 3D structure known. For the purpose of drug discovery, we are searching for the best possible protein as well, which is why databases of proteins with their predicted 3D structures are being worked on, such as \href{https://www.uniprot.org/}{https://www.uniprot.org/}, or \href{https://alphafold.ebi.ac.uk/}{https://alphafold.ebi.ac.uk/} \cite{senior_improved_2020}.
+
+Modelling and predicting the complete four levels of protein structure is a complex task. Interestingly, simplified models exist that can be experimentally shown to achieve a reasonable approximation. One of these models was given by Dill et al. in 1995. (republished in 2008) \cite{dill_principles_2008}.
+
+\subsection{The HP model for protein folding by Dill}
 
 The HP model replaces all protein's amino acids by their water affinity categories: polar (P) and hydrophobic (H), or 0 and 1. Then, the protein can be represented by a sequence consisting of letters H and P of the length equal to its amino acid number. Then, this chain is embedded in either a two- or a three-dimensional grid. The letters must be placed in the grid's intersections so that consecutive letters are in adjoining intersections (either to the up, down, left or right directions and above or under in the 3D case) while the chain is not allowed to cross itself over. Then a scoring of the placement is determined by the count of the all pairs of non-covalently bonded (non-consecutive) but neighbouring H letters on the grid. This captures the idea of energy minimization, in which the hydrophobic molecules tend to be close to each other and thus avoid exposure, while the polar molecules are neutral, since in the cell, all molecules are immersed in ''water'', the energy is best conserved by forming an external shell from their water-liking parts and hiding their water-disliking parts in the inside.
 
