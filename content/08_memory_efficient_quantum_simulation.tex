@@ -20,15 +20,9 @@ Unfortunately, while Qiskit itself is open-source, it's architecture (similarly 
 
 In this chapter I will examine the architecture and implementation of the framework that is capable of running simulations of gated general-purpose quantum computation.
 
-\section{Dill folding}
+\section{The HP model for protein folding by Dill}
 
-In the molecular docking task, the candidate protein has already been selected with its 3D structure known. For the purpose of drug discovery, we are searching for the best possible protein as well, which is why databases of proteins with their predicted 3D structures are being worked on, such as \href{https://www.uniprot.org/}{https://www.uniprot.org/}, or \href{https://alphafold.ebi.ac.uk/}{https://alphafold.ebi.ac.uk/} \cite{senior_improved_2020}.
-
-Modelling and predicting the complete four levels of protein structure is a complex task. Interestingly, simplified models exist that can be experimentally shown to achieve a reasonable approximation. One of these models was given by Dill et al. in 1995. (republished in 2008) \cite{dill_principles_2008}.
-
-\subsection{The HP model for protein folding by Dill}
-
-The HP model replaces all protein's amino acids by their water affinity categories: polar (P) and hydrophobic (H), or 0 and 1. Then, the protein can be represented by a sequence consisting of letters H and P of the length equal to its amino acid number. Then, this chain is embedded in either a two- or a three-dimensional grid. The letters must be placed in the grid's intersections so that consecutive letters are in adjoining intersections (either to the up, down, left or right directions and above or under in the 3D case) while the chain is not allowed to cross itself over. Then a scoring of the placement is determined by the count of the all pairs of non-covalently bonded (non-consecutive) but neighbouring H letters on the grid. This captures the idea of energy minimization, in which the hydrophobic molecules tend to be close to each other and thus avoid exposure, while the polar molecules are neutral, since in the cell, all molecules are immersed in ''water'', the energy is best conserved by forming an external shell from their water-liking parts and hiding their water-disliking parts in the inside.
+The HP model\cite{dill_principles_2008} replaces all protein's amino acids by their water affinity categories: polar (P) and hydrophobic (H), or 0 and 1. Then, the protein can be represented by a sequence consisting of letters H and P of the length equal to its amino acid number. Then, this chain is embedded in either a two- or a three-dimensional grid. The letters must be placed in the grid's intersections so that consecutive letters are in adjoining intersections (either to the up, down, left or right directions and above or under in the 3D case) while the chain is not allowed to cross itself over. Then a scoring of the placement is determined by the count of the all pairs of non-covalently bonded (non-consecutive) but neighbouring H letters on the grid. This captures the idea of energy minimization, in which the hydrophobic molecules tend to be close to each other and thus avoid exposure, while the polar molecules are neutral, since in the cell, all molecules are immersed in ''water'', the energy is best conserved by forming an external shell from their water-liking parts and hiding their water-disliking parts in the inside.
 
 \begin{figure}[H]
     \centering

@@ -103,6 +103,10 @@ For example, hemoglobin is a protein found in red blood cells whose function is 
 
 To understand the function of a protein, we must determine its complete 3D structure. While techniques exist to measure a molecule's structure in real life, these are incredibly time-consuming and expensive to perform, even for a single molecule. Consequently, we would like to design algorithms that can predict the complete 3D structure of a protein based on its primary structure or its amino acid sequence. These algorithms are called protein folding algorithms.
 
+In the molecular docking task, the candidate protein has already been selected with its 3D structure known. For the purpose of drug discovery, we are searching for the best possible protein as well, which is why databases of proteins with their predicted 3D structures are being worked on, such as \href{https://www.uniprot.org/}{https://www.uniprot.org/}, or \href{https://alphafold.ebi.ac.uk/}{https://alphafold.ebi.ac.uk/} \cite{senior_improved_2020}.
+
+Modelling and predicting the complete four levels of protein structure is a complex task. Interestingly, simplified models exist that can be experimentally shown to achieve a reasonable approximation. One of these models was given by Dill et al. in 1995. (republished in 2008) \cite{dill_principles_2008}. Even though these models vastly simplify the real-life behaviour of protein chains, the corresponding algorithmic problem is still NP-hard. Later in my dissertation, I will further discuss Dill's HP model for protein folding.
+
 \subsection{Molecular docking}
 
 Proteins are the primary agents of biological function, as they control the various chemical mechanisms that occur inside the cells. Proteins that act as biological catalysts are called enzymes. Catalysts facilitate various chemical reactions without being consumed in the process. These molecules have a binding site (a 'hole' on their 3D surface), into which only a specific other molecule fits, which is called a substrate. During the chemical reaction, the substrate is turned into other products.  \cite{fionda_networks_2019}
@@ -120,3 +124,13 @@ In order to inhibit an enzyme's reaction from happening, we must find a protein 
 
 In the molecular docking problem, both the binding site's 3D structure and the protein's 3D structure are represented by a graph. The graph's vertices are the atoms on the surface. The edges represent a chemical bond between the corresponding atoms. The weight of a given edge represents the physical distance between the atoms. Omitting the edge weights, the problem is analogous to subgraph isomorphy (an NP-hard problem), the binding site's graph representation being a subgraph of the inhibitor molecule's entire surface in a graph representation. With the edge weights present, we can employ a measure that assigns a score to an isomorphy mapping of the vertices between the two graphs. Typically root mean square deviation (RMSD) is used, which can be defined for two sets of (ordered) points. The mapping achieving the highest score is the best theoretical fit for the molecule.
  \cite{wang_protein_2021}
+
+\section{The connection between bioinformatics and quantum algorithms}
+
+While some problems in bioinformatics, such as DNA sequence alignment, already have a fast enough solution, others, such as protein folding and molecular docking, turn out to be NP-hard ones. I have chosen to explore protein folding in more detail.
+
+Grover's search algorithm is a quantum algorithm that can solve problems classically in NP if a candidate solution can be encoded to a quantum register and the verifier algorithm can be translated to quantum gate logic. Applying multiple Grover searches, we can also give a solution that minimizes or maximizes a target function. In the case of protein folding, a candidate solution is a possible orientation of a chain in 3D space, and we are looking for the minimum energy configuration.
+
+Quantum walks work by exploring the problem's domain, which can be represented in a graph form. The vertices are candidate solutions, and the edges connecting them are small transformations on them. In the case of protein folding, a possible small transformation is rotating the chain at a single point. This operation also has to be translated to quantum gate logic.
+
+These two algorithms can be effectively combined. For example, the initialization step for Grover can be a quantum walk, or they can be applied in turns.
