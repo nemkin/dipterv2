@@ -12,11 +12,11 @@ Research into the human genome started with the discovery of the double helix st
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/bioinformatics/dna.png}
+    \includegraphics[width=0.6\textwidth]{figures/bioinformatics/dna.png}
     \caption{DNA structure\cite{dna_sequencing}}
 \end{figure}
 
-From a computer science viewpoint, a simplified DNA model is a string consisting of the four letters (A, C, T and G) from one of the strands of the physical molecule. (However, this model omits the 3D spatial structure.) Due to the limits of our technology, current methods enable us to read up to 1000 consecutive letters from a single sample. To sequence a longer string, we can break the molecule into sufficiently smaller fragments and sequence them individually. Unfortunately, in this process, the order in which the fragments originally occurred is lost. One possible approach to deal with this problem is to create copies of the DNA molecule we are interested in and randomly break each of these copies into fragments. With a high probability, the resulting fragments from different copies will overlap with each other. Then, the task becomes reconstructing the original string from these fragments while considering the possible errors in our biological measurements. The possible number of fragment orderings is enormously large, so a brute force algorithm does not suffice for solving this task.\cite{CollinsHumanGenome1995}
+From a computer science viewpoint, a simplified DNA model is a string consisting of the four letters from one of the strands of the physical molecule. (However, this model omits the 3D spatial structure.) Due to the limits of our technology, current methods enable us to read up to 1000 consecutive letters from a single sample. To sequence a longer string, we can break the molecule into sufficiently smaller fragments and sequence them individually. Unfortunately, in this process, the order in which the fragments originally occurred is lost. One possible approach to deal with this problem is to create copies of the DNA molecule we are interested in and randomly break each of these copies into fragments. With a high probability, the resulting fragments from different copies will overlap with each other. Then, the task becomes reconstructing the original string from these fragments while considering the possible errors in our biological measurements. The possible number of fragment orderings is enormously large, so a brute force algorithm does not suffice for solving this task.\cite{CollinsHumanGenome1995}
 
 Between any two humans, the amount of genetic variation is estimated to be around 0.6\%\cite{the_1000_genomes_project_consortium_global_2015}. This enables us to use the targeted part of the genome sequence preassembled by the Human Genome Project and align our obtained DNA sequence fragments to the best fitting position to obtain the entire string of our DNA. Algorithms such as the Smith-Waterman algorithm and the Needleman-Wunsch algorithm can efficiently perform this sequence alignment task.
 
@@ -93,12 +93,12 @@ The functionality and role of a protein are determined by its spatial structure,
     \caption{Quaternary structure of the protein PCNA\cite{protein_structure}}
 \end{figure}
 
-For example, hemoglobin is a protein found in red blood cells whose function is to carry oxygen molecules throughout the blood vessels. The oxygen molecule binds to the hemo groups found in the protein.
+For example, hemoglobin is a protein found in red blood cells whose function is to carry oxygen molecules throughout the blood vessels. The oxygen molecule binds to the heme groups found in the protein.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/bioinformatics/hemoglobin.png}
-    \caption{Hemoglobin, the iron-containing heme groups are shown in green \\(Author: Richard Wheeler, \href{https://en.wikipedia.org/wiki/File:1GZX\_Haemoglobin.png}{Source})}
+    \includegraphics[width=0.5\textwidth]{figures/bioinformatics/hemoglobin.png}
+    \caption{Hemoglobin, the iron-containing heme groups are shown in green\cite{wheeler_1gzx_nodate}}
 \end{figure}
 
 To understand the function of a protein, we must determine its complete 3D structure. While techniques exist to measure a molecule's structure in real life, these are incredibly time-consuming and expensive to perform, even for a single molecule. Consequently, we would like to design algorithms that can predict the complete 3D structure of a protein based on its primary structure or its amino acid sequence. These algorithms are called protein folding algorithms.
@@ -120,22 +120,3 @@ In order to inhibit an enzyme's reaction from happening, we must find a protein 
 
 In the molecular docking problem, both the binding site's 3D structure and the protein's 3D structure are represented by a graph. The graph's vertices are the atoms on the surface. The edges represent a chemical bond between the corresponding atoms. The weight of a given edge represents the physical distance between the atoms. Omitting the edge weights, the problem is analogous to subgraph isomorphy (an NP-complete problem), the binding site's graph representation being a subgraph of the inhibitor molecule's entire surface in a graph representation. With the edge weights present, we employ a measure that assigns a score to an isomorphy mapping of the vertices between the two graphs. Typically root mean square deviation (RMSD) is used, which can be defined for two sets of (ordered) points. The mapping achieving the highest score is the best theoretical fit for the molecule.
  \cite{wang_protein_2021}
-
-\section{Dill folding}
-
-In the molecular docking task, the candidate protein has already been selected with its 3D structure known. For the purpose of drug discovery, we are searching for the best possible protein as well, which is why databases of proteins with their predicted 3D structures are being worked on, such as \href{https://www.uniprot.org/}{https://www.uniprot.org/}, or \href{https://alphafold.ebi.ac.uk/}{https://alphafold.ebi.ac.uk/} \cite{senior_improved_2020}.
-
-Modelling and predicting the complete four levels of protein structure is a complex task. Interestingly, simplified models exist that can be experimentally shown to achieve a reasonable approximation. One of these models was given by Dill et al. in 1995. (republished in 2008) \cite{dill_principles_2008}.
-
-\subsection{The HP model for protein folding by Dill}
-
-The HP model replaces all protein's amino acids by their water affinity categories: polar (P) and hydrophobic (H), or 0 and 1. Then, the protein can be represented by a sequence consisting of letters H and P of the length equal to its amino acid number. Then, this chain is embedded in either a two- or a three-dimensional grid. The letters must be placed in the grid's intersections so that consecutive letters are in adjoining intersections (either to the up, down, left or right directions and above or under in the 3D case) while the chain is not allowed to cross itself over. Then a scoring of the placement is determined by the count of the all pairs of non-covalently bonded (non-consecutive) but neighbouring H letters on the grid. This captures the idea of energy minimization, in which the hydrophobic molecules tend to be close to each other and thus avoid exposure, while the polar molecules are neutral, since in the cell, all molecules are immersed in ''water'', the energy is best conserved by forming an external shell from their water-liking parts and hiding their water-disliking parts in the inside.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figures/bioinformatics/hp_model.png}
-    \caption{Examples of a HP chain embedded in 2D and 3D space\\(H represented in black, P in white)\cite{dill_principles_2008}}
-\end{figure}
-
-Even this simplified problem is proven to be NP-hard, sinc a reduction from the Hamiltonian-cycle problem can be shown \cite{crescenzi_complexity_1998}. We could achieve a slightly more complex model, by keeping the grid but reverting back to 20 possible letters, corresponding to the 20 possible amino-acids and employing a scoring matrix for all possible pairs of neighbours, however the two-dimensional HP model has been found to be the best match of the experimental results among all of these approximations. \cite{crescenzi_complexity_1998}
-

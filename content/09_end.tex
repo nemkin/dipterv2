@@ -1,0 +1,44 @@
+\chapter{Conclusion}
+
+\section{Summary of results}
+
+During my research and development, I have read several excellent sources \cite{Aharonov, KempeIntroduction, Portugal, Santha, XiaReview} and lecture notes, and found \cite{Portugal} to be a comprehensive general introduction. I reformulated its descriptions to the language of matrices in an explicit manner, which matches both classical random walk descriptions and universal quantum computing hardware requirements. I believe these are easier to understand for someone with a college-level software engineering background who is new to the subject.
+
+Besides this, I gave a generalized requirement for constructing quantum random walks on $d$-regular graphs employing the position-coin notation and improved the memory requirement of $n$-dimensional lattice walks. I presented my proofs for both of these advancements.
+
+Furthermore, I implemented a simulator software in Python, employing an architectural pattern that makes it straightforward to understand and extend the codebase. This software is available under the open-source MIT license on my personal Github account, under the following link:
+
+\url{https://github.com/nemkin/quantum}
+
+My goal for the future is to explore quantum solutions to classically NP-hard problems and their connection to Grover's search algorithm. I am interested in computer-aided drug design, particularly the NP-hard problems of protein folding and molecular docking. While researching protein folding, I found a simplified model that is still NP-hard but can be implemented on a gated general-purpose quantum computer. However, I ran into a hard memory limit since the largest computable protein chain contained at most four amino acids, on which the problem is trivial.
+
+I looked into various open-source quantum computational frameworks, notably Qiskit and how I might reduce their memory requirements. These frameworks focus on a different goal: to allow the programming of quantum computers their respective vendors sell, which means that simulation, especially memory-efficient simulation, is not their primary concern. Their implementation uses sparse-matrix representation of each unitary matrix and allocates the resources for each individual instance of them. This made it very difficult and expensive to use them for my usecase, which is testing my quantum algorithms for protein folding on even relatively small inputs.
+
+The primary goal of this framework is to reduce memory-usage of simulation while trading in runtime. For research purposes, it is acceptable to wait for example a few days for a simulation of protein folding runs on a relatively high-end PC, however it is not cost-effective to buy terabytes of memory or rent a memory-optimized virtual machine from the cloud.
+
+In this dissertation, I have developed the mathematical framework for implementing general-purpose software for gated quantum computer simulations. These developments have been:
+
+\begin{itemize}
+    \item The logic of handling the probability amplitudes in the current set of registers and applying operators to a subset of these registers using qubit mapping permutations on their binary indexing sequences.
+    \item The architecture allows individual tricks for memory-efficient operator implementation, such as on-the-fly generation and the $u$ function method.
+    \item The building blocks for Grover's algorithm's implementation, the Hadamard, Grover, Sum and MCnot operators.
+\end{itemize}
+
+\section{Plans for the future}
+
+The software is still under heavy development. In the future, I would like to revise the report generation since the pdf format has proven to be too rigid. Instead of Latex, I believe a static website with an organized link hierarchy and the possibility for user interaction would prove much more helpful. Moreover, I am interested in extending my software's capabilities by implementing other quantum walk models. For example, inspired by the work of Ambainis, Szegedy \cite{Szegedy} designed a different kind of approach to quantum walks by creating a general method to quantize classical Markov chains.
+
+Furthermore, I plan to study applications of quantum walking, such as the MNRS quantum walk based search algorithm \cite{MNRS} which improves various aspects of many previous walk based algorithms. I aim to apply quantum walk based algorithms to bioinformatics research, such as medicine development.
+
+My goals for the future with this framework is to finish the implementation of Grover's algorithm by connecting the implemented building blocks.
+
+In addition, I would like to introduce unit testing for the individual components of the software. Since all of these operators rely heavily on custom implementation, it is important that their correctness is verified. In particular, I would like to explore methamorphic testing, in which the operators are tested by verifying if they admit to certain mathematical properties, such as the self-adjointness of the Hamilton-operator.
+
+Furthermore, I would like to extend the available operators in the framework so that other types of algorithms can be implemented in it as well.
+
+\section{Source code availability}
+
+The source code for the framework is available at the following link under the open-source MIT License:
+
+\href{https://github.com/nemkin/qmem}{https://github.com/nemkin/qmem}
+
