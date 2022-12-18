@@ -26,20 +26,4 @@ To boost Grover's speed even further, we could inject this structural informatio
 
 \section{Contents of this dissertation}
 
-\todo[inline]{Ezt átírni a végegesre.}
-
-In order to reduce the memory requirements for any quantum computation simulation, I have to be able to reduce storing large operation matrices in memory whenever I can. This requires a completely different architecture.
-
-\subsection{TDK 2021/Dipterv}
-
-The rest of this thesis is structured in the following way: In Chapter 2, I introduce Quantum computing, specifically Quantum Random Walks, in a bottom-up approach, starting from the simplest form and then generalizing it. Contrary to many authors, I use linear algebra exclusively to describe each step since implementation on a universal quantum computer requires the definition to come in the form of unitary transformations.
-
-Section 2.2.5 discusses two of the generalization techniques found in~\cite{Portugal}. I present my improvement to one of these methods, which I have proven to have the equivalent result but remove an exponential memory requirement from the implementation. The other method in~\cite{Portugal} uses a constraint about the evolution operator, for which I have not found proof in the literature. Here, I present my more generalized version of this constraint and the proof I have given.
-
-In Chapter 3, I introduce three bioinformatics problems: DNA sequencing, Protein folding and Molecular docking. I explain the computational models that emerge from these practical problems and the well-known computational problems they reduce to.
-
-In Chapter 4, I describe my simulator software's architecture and implementation details and present the results obtained from my simulation runs.
-
-\subsection{TDK 2022}
-
-The remaining chapters are structured as follows: In Chapter 2 I introduce Grover's search algorithm framework and solve a generalized version of the Sudoku puzzle with it. I iterate over the necessary components from this solution, the particular operators needed for the oracle and the amplitude amplification technique's implementation. In Chapter 3 I lay down the mathematical foundations for a quantum simulator framework's implementation, particularly the solution to applying a quantum operator to a subset of the registers in the system, then I introduce the quantum operators and their implementations in my system. Finally, I describe the architectural design patterns used in the system. In Chapter 4 I summarize the results of this paper and lay down my plans for the future.
+The rest of this thesis is structured in the following way: In Chapter 2, I introduce 3 computational problems in bioinformatics: DNA sequencing, protein folding and molecular docking, and explain protein folding's connection to two quantum algorithms. In Chapter 3, I introduce the postulates of quantum mechanics, the basis of quantum computing. In Chapter 4, I discuss quantum random walks, in a bottom-up approach, starting from the simplest form and then generalizing it, and I present my improvemnts on these generalization techniques. In Chapter 5, I describe my simulator software's architecture and implementation details and present the results obtained from my simulation runs. In Chapter 6, I introduce Grover's search algorithm framework and solve a generalized version of the Sudoku puzzle with it. I iterate over the necessary components from this solution, the particular operators needed for the oracle and the amplitude amplification technique's implementation. In Chapter 7, I explain my approach for encoding candidate solutions in quantum protein folding and the memory usage problem I ran into. Then, I lay down the mathematical foundations and architectural design for the memory efficient quantum simulator framework I have written. In Chapter 8, I summarize the results of this dissertation and lay down my plans for the future.

@@ -1,6 +1,6 @@
 \chapter{Quantum walks}
 
-Current technology is yet to produce a significant number of qubits (quantum bits) in a quantum processor, but many believe the amount will increase over the years. The first practical quantum algorithms to be run on these processors are likely to be the ones that use qubits sparingly. Quantum walking, the generalized version of classical random walking, is exactly this kind of algorithm. The number of qubits required to run a quantum walk on a graph is logarithmic in the number of vertices, making it a promising technique for the near future. Furthermore, by extending the quantum walk algorithm with an oracle, it can be used to perform database search-based algorithms, which could be used for solving many of the computationally hard bioinformatical problems.
+Current technology is yet to produce a significant number of qubits (quantum bits) in a quantum processor, but many believe the amount will increase over the years. The first practical quantum algorithms to be run on these processors are likely to be the ones that use qubits sparingly. Quantum walking, the generalized version of classical random walking, is exactly this kind of algorithm. The number of qubits required to run a quantum walk on a graph is logarithmic in the number of vertices, making it a promising technique for the near future. Furthermore, by extending the quantum walk algorithm with a Grover search, it can be used to perform searching, which could be used for solving many of the computationally hard bioinformatical problems.
 
 \section{Classical random walks}
 
@@ -398,11 +398,12 @@ using \hyperref[TensorMixedProduct]{[TensorMixedProduct]}:
 After presenting quantum walking on the line, I review and extend two approaches to generalize it in this chapter.
 
 \begin{enumerate}
-    \item \textbf{Section 4.3.1: Use multiple two-dimensional coins}: In~\cite{Portugal}, Renato Portugal shows the generalization of quantum walks on a line to a two-dimensional grid, using a method with 2 two-dimensional coins. In this work, I prove how his method reduces to effectively two synchronous independent walks on the $x$ and $y$ axes. Then I improve his technique by generalizing to arbitrarily large dimensional grids in a more memory-efficient way than what would naturally follow from his description.
-    \item \textbf{Section 4.3.2: Use a single higher dimensional coin}: In~\cite{Portugal}, Renato Portugal describes the generalization of a quantum walk on a line to an arbitrary undirected graph and gives the necessary condition for creating the unitary transition matrix without proof. In this work, I generalize to directed graphs and give proof of the generalization of the condition using directed graphs.
+    \item \textbf{Section \ref{quantum-walk-multiple-2D-coins}: Use multiple two-dimensional coins}: In~\cite{Portugal}, Renato Portugal shows the generalization of quantum walks on a line to a two-dimensional grid, using a method with 2 two-dimensional coins. In this work, I prove how his method reduces to effectively two synchronous independent walks on the $x$ and $y$ axes. Then I improve his technique by generalizing to arbitrarily large dimensional grids in a more memory-efficient way than what would naturally follow from his description.
+    \item \textbf{Section \ref{quantum-walk-one-highD-coin}: Use a single higher dimensional coin}: In~\cite{Portugal}, Renato Portugal describes the generalization of a quantum walk on a line to an arbitrary undirected graph and gives the necessary condition for creating the unitary transition matrix without proof. In this work, I generalize to directed graphs and give proof of the generalization of the condition using directed graphs.
 \end{enumerate}
 
 \subsection{Generalization using multiple independent 2 dimensional coins}
+\label{quantum-walk-multiple-2D-coins}
 
 In \cite{Portugal}, Renato Portugal defines the following method for Quantum Walking on a 2D grid:
 
@@ -585,6 +586,7 @@ coin's state.
 This proves, that the walk on the 2D grid decomposes into two independent line walks on the axes, since $\mathbf{S}_x$ only touches the $x$ coordinate and the first coin, while $\mathbf{S}_y$ only touches the $y$ coordinate and the second coin and there is no entanglement between the registers of the $x$ and $y$ axes. Using this fact, we can simply simulate two independent quantum walks on the line in parallel, or sequentially, using the same registers, which wastly decreases the memory needs of the algorithm. Running in parallel, the memory needs is now $d(4(2N+1)^2) = O(dN^2)$, or running sequentially $(4(2N+1))^2 = O(N^2)$, however the latter uses $dN$ steps, instead of $N$, and $d$ measurements, instead of $1$.
 
 \subsection{Generalization using a single higher dimensional coin}
+\label{quantum-walk-one-highD-coin}
 
 Using this method, we generalize quantum walking to arbitrary directed graphs. To do so, we first generalize to regular graphs, then discuss how non-regular graphs can be regularized.
 

@@ -59,7 +59,7 @@ In the original Sudoku puzzle, we have a $(3^2\cdot{}3^2)$ table, that must be f
   \caption{Sudoku puzzle}
 \end{figure}
 
-In order demonstrate memory usage scaling, I generalize this Sudoku to a table of size $(n^2\cdot{} n^2)$, where each row, column and $(n\cdot{}n)$ distinct subsquare of the table must be a unique number from the $[1, n^2]$ interval.
+In order demonstrate time and memory scaling, I generalize this Sudoku to a table of size $(n^2\cdot{} n^2)$, where each row, column and $(n\cdot{}n)$ distinct subsquare of the table must be a unique number from the $[1, n^2]$ interval.
 
 The only solution for $n=1$ is trivial.
 
@@ -121,6 +121,8 @@ And an example for $n=4$ is the following.
   \end{subfigure}
   \caption{Sudoku puzzle $(n=4)$}
 \end{figure}
+
+This generalized version of Sudoku is in the time complexity class NP, which means the Grover search algorithm can be used to solve it. Furthermore, this problem has key components in it which are analogous to protein folding, but much simpler than that.
 
 \section{Designing a quantum solver for the Sudoku puzzle}
 
@@ -269,8 +271,10 @@ Together, these two reflections constitute a rotation towards the $\ket{w}$ solu
 
 In order to recompute the oracle on the new search space, first the old results must be erased from the ancilla (sum) qubits in the system. Since the WeightedAdder operator works internally with $CNOT$ gates, erasing the result can be done by applying the same circuit in reverse order.
 
-\section{The tools needed to implement Grover's algorithm}
+\section{Memory problems in Grover search implementations}
 
-In this capter I have introduced Grover's algorithm and how to use it to solve a generalized version of the Sudoku puzzle.
+In this capter I have introduced Grover's algorithm and how to use it to solve a generalized version of the Sudoku puzzle. I have fully implemented the algorithm described above in Qiskit, using the following 4 quantum logic gates: the Hadamard (for the phase-kickback), the Grover (the diffuser operator), the Sum (WeightedAdder) and the Multi-controlled NOT gate (for the oracle bit).
 
-In order to use this framework, 4 operators must be implemented in the system: the Hadamard (for the phase-kickback), the Grover (the diffuser operator), the Sum (WeightedAdder) and the Multi-controlled NOT gate (for the oracle bit).
+Unfortunately, as I further discuss in the next chapter, Grover search implementations in practice turn out to use such a large amount of memory for even small problem instances, that I was unable to run them on my PC. For example, a $(3 \times 3)$ Sudoku matrix would require $67$ TB of memory. As I was formulating parts of the verifier algorithm for quantum protein folding, I have run into a similar problem with memory usage.
+
+This is why I started working on quantum algorithm simulation implementations focusing on memory efficiency.

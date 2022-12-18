@@ -1,16 +1,10 @@
-\chapter{Application of quantum algorithms in practice}
+\chapter{Memory efficient quantum algorithm simulation framework}
 
-In the past year I have been researching protein folding and how to implement it on a general-purpose quantum computer. I have ran into a significant problem: I was unable to run any experiments of usable size, mainly due to limitations in memory. Due to quantum parallelism, the memory requirements of running a quantum calculation simulation are super-exponential. In particular, there is one component in Qiskit, which seemed to come back in any form of model I have tried to implement: a quantum gate for taking the sum of $n$ qubits, called the WeightedAdder class. 
+In the past year I have been researching protein folding and how to implement it on a general-purpose quantum computer. I have ran into a significant problem: I was unable to run any experiments of usable size, mainly due to limitations in memory. Due to quantum parallelism, the memory requirements of running a quantum calculation simulation are super-exponential. In particular, there is one component in Qiskit, which seemed to come back in any form of model I have tried to implement: a quantum gate for taking the sum of $n$ qubits, called the WeightedAdder class.
 
-This component came to my attention, because a natural way to encode protein structures is by creating a 2D or 3D grid and laying the aminoacid chain down on it\cite{dill_principles_2008}, as seen below.
+\section{Problems with quantum protein folding}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{figures/bioinformatics/hp_model.png}
-    \caption{HP model of protein folding\cite{dill_principles_2008}}
-\end{figure}
-
-From a single vertex in a 3D grid, we can step in $4$ or $6$ directions: up, down, left, right and inwards and outwards in the 3D case. We can encode these naturally, using one-hot encoding, by introducing $6$ bits of information. If we assume that the chain starts in the origin, then we can encode a chain shape by giving the directions of the $(n-1)$ steps it takes.
+The WeightedAdder component came to my attention, because a natural way to encode protein structures is by creating a 2D or 3D grid and laying the aminoacid chain down on it\cite{dill_principles_2008}. From a single vertex in a 3D grid, we can step in $4$ or $6$ directions: up, down, left, right and inwards and outwards in the 3D case. We can encode these naturally, using one-hot encoding, by introducing $6$ bits of information. If we assume that the chain starts in the origin, then we can encode a chain shape by giving the directions of the $(n-1)$ steps it takes.
 
 A chain like this is viable, when it doesn't cross over itself. A chain's optimality is assessed by counting how many pairs of various aminoacids are neighbouring each other. To answer both of these questions, we must be able to calculate relative distances between any two points of the chain. Using the directinal one-hot encoding model, these questions can be answered by taking the sum of some qubits.
 
@@ -19,18 +13,6 @@ Using these operations, we can create a quantum oracle, that assesses the optima
 Unfortunately, while Qiskit itself is open-source, it's architecture (similarly to other quantum computing frameworks) is designed from the core to store the matrices of various operations (such as the WeightedAdder operation) in its memory and retrieve this information during simulation. This means that I am unable to correct this single operation in Qiskit.
 
 In this chapter I will examine the architecture and implementation of the framework that is capable of running simulations of gated general-purpose quantum computation.
-
-\section{The HP model for protein folding by Dill}
-
-The HP model\cite{dill_principles_2008} replaces all protein's amino acids by their water affinity categories: polar (P) and hydrophobic (H), or 0 and 1. Then, the protein can be represented by a sequence consisting of letters H and P of the length equal to its amino acid number. Then, this chain is embedded in either a two- or a three-dimensional grid. The letters must be placed in the grid's intersections so that consecutive letters are in adjoining intersections (either to the up, down, left or right directions and above or under in the 3D case) while the chain is not allowed to cross itself over. Then a scoring of the placement is determined by the count of the all pairs of non-covalently bonded (non-consecutive) but neighbouring H letters on the grid. This captures the idea of energy minimization, in which the hydrophobic molecules tend to be close to each other and thus avoid exposure, while the polar molecules are neutral, since in the cell, all molecules are immersed in ''water'', the energy is best conserved by forming an external shell from their water-liking parts and hiding their water-disliking parts in the inside.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.6\textwidth]{figures/bioinformatics/hp_model.png}
-    \caption{Examples of a HP chain embedded in 2D and 3D space\\(H represented in black, P in white)\cite{dill_principles_2008}}
-\end{figure}
-
-Even this simplified problem is proven to be NP-hard, sinc a reduction from the Hamiltonian-cycle problem can be shown \cite{crescenzi_complexity_1998}. We could achieve a slightly more complex model, by keeping the grid but reverting back to 20 possible letters, corresponding to the 20 possible amino-acids and employing a scoring matrix for all possible pairs of neighbours, however the two-dimensional HP model has been found to be the best match of the experimental results among all of these approximations. \cite{crescenzi_complexity_1998}
 
 \section{Design goals}
 
@@ -376,10 +358,10 @@ function.
 First, the $m$ qubits of the opetor are partitioned into two parts: input and output
 
 \begin{align*}
-m = s + \ceil{\log_{2}(s)},
+m = s + \lceil{}\log_{2}(s)\rceil{},
 \end{align*}
 
-since the sum of $s$ qubits can be represented on $\ceil{\log_{2}(s)}$ bits.
+since the sum of $s$ qubits can be represented on $\lceil{}\log_{2}(s)\rceil{}$ bits.
 
 Then, $u$ is defined as 
 
@@ -418,3 +400,9 @@ The \texttt{get\_bit\_mask\_mapping} and \texttt{get\_qubit\_mapping} methods de
 The \texttt{Sum} and \texttt{Mcnot} required me to implement a form of inversion-of-control. In the first iteration, a third class (an \texttt{Orchestrator}) received both the registers and the operator it should apply to them, iteratively generated the necessary rows from the operator and applied them onto the registers. This was poblematic, because this type of control flow made it difficult to implement the \texttt{Sum} and \texttt{Mcnot} operators, since they calculate their result without relying on an explicit representation row format.
 
 The knowledge of how an operator should be applied to the registers should be given to the operator itself, since the framework relies on clever, operator-specific memory-efficient implementations to function. This is exactly what the Visitor pattern is used for. According to the Design Patterns book\cite{DesignPatterns} we can \textit{``Use the Visitor pattern when many distinct and unrelated operations need to be performed on objects in an object structure, and [we] want to avoid "polluting" their classes with these operations. Visitor lets [us] keep related operations together by defining them in one class. When the object structure is shared by many applications, use Visitor to put operations in just those applications that need them.''}
+
+\section{Source code availability}
+
+The source code for the framework is available at the following link under the open-source MIT License:
+
+\href{https://github.com/nemkin/qmem}{https://github.com/nemkin/qmem}
