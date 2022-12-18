@@ -1,8 +1,10 @@
 \chapter{Conclusion}
 
-My research has started with understanding quantum computing in general, focused specifically on quantum walks.
+In this dissertation I have covered three main topics: bioinformatics and protein folding, quantum walks, and Grover's search algorithm.
 
-During my research and development, I have read several excellent sources \cite{Aharonov, KempeIntroduction, Portugal, Santha, XiaReview} and lecture notes, and found \cite{Portugal} to be a comprehensive general introduction. I reformulated its descriptions to the language of matrices in an explicit manner, which matches both classical random walk descriptions and universal quantum computing hardware requirements. I believe these are easier to understand for someone with a college-level software engineering background who is new to the subject.
+\section{Achievements}
+
+My research has started with understanding quantum computing in general, focused specifically on quantum walks. I have read several excellent sources \cite{Aharonov, KempeIntroduction, Portugal, Santha, XiaReview} and lecture notes, and found \cite{Portugal} to be a comprehensive general introduction. I reformulated its descriptions to the language of matrices in an explicit manner, which matches both classical random walk descriptions and universal quantum computing hardware requirements. I believe these are easier to understand for someone with a college-level software engineering background who is new to the subject.
 
 Besides this, I gave a generalized requirement for constructing quantum random walks on $d$-regular graphs employing the position-coin notation and improved the memory requirement of $n$-dimensional lattice walks. I presented my proofs for both of these advancements.
 
@@ -12,7 +14,7 @@ I have looked into three bioinformatical problems: DNA sequencing, protein foldi
 
 I have devised a way to encode a protein in this model in a quantum register, however I have ran into a problem with formulating a verifier algorithm. The simulator frameworks used too much memory, even on the much simpler, but analogous problem of Sudoku. I estimated, that the largest computable protein chain in Qiskit would contain at most four amino acids, on which the problem is trivial.
 
-After further looking into why my incomplete solution in Qiskit uses such large amounts of memory, I have found many inefficiencies in the software, in terms of memory handling. This is due to the fact, that quantum frameworks, such as Qiskit (IBM) and Cirq (Google) focus on a different goal: to allow the programming of quantum computers their respective vendors sell, which means that simulation, especially memory-efficient simulation, is not their primary concern. Their implementation uses sparse-matrix representation of each unitary matrix and allocates the resources for each individual instance of them. This made it very difficult and expensive to use them for my usecase, which is testing my quantum algorithms for protein folding on even relatively small inputs.
+After further looking into why my incomplete solution in Qiskit uses such large amounts of memory, I have found many inefficiencies in the software, in terms of memory handling. This is due to the fact, that quantum frameworks, such as Qiskit (IBM) and Cirq (Google) focus on a different goal: to allow the programming of quantum computers their respective vendors sell, which means that simulation, especially memory-efficient simulation, is not their primary concern. Their implementation uses sparse-matrix representation of each unitary matrix and allocates the resources for each individual instance of them. This made it very difficult and expensive to use them for my usecase, which is testing my quantum algorithms for protein folding even on relatively small inputs.
 
 This is why I have decided to write my own quantum simulator framework, that focuses on memory efficient simulation.
 
