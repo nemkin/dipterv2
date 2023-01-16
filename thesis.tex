@@ -1,5 +1,5 @@
-\documentclass[11pt,a4paper,oneside]{report} % Single-side
-%\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
+%\documentclass[11pt,a4paper,oneside]{report} % Single-side
+\documentclass[11pt,a4paper,twoside,openright]{report}  % Duplex
 
 \input{include/packages}
 
@@ -21,6 +21,9 @@
 \input{include/preamble}
 
 \begin{document}
+
+\includepdf[pages=-]{task.pdf}
+\afterpage{\null\newpage}
 
 \pagenumbering{gobble}
 \selectthesislanguage
